@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 
 import classes.Cart;
+import classes.CartLine;
 import classes.Product;
 import o01.console.tools.InitialData;
 import o02.consoleImproved.tools.DisplayConsoleTools2;
+import o02.consoleImproved.tools.InputTools;
 
 public class App2 {
 
@@ -51,7 +53,25 @@ public class App2 {
 
 		int choice = 0;
 		do {
-			DisplayConsoleTools2.displayProducts(null);
+			DisplayConsoleTools2.displayProducts(productList);
+			DisplayConsoleTools2.displayMenu(cart);
+			choice = InputTools.readBoundedInt(sc, "Votre choix ?", 1, 4);
+			switch (choice) {
+			case 1:
+				addProduct(sc);
+				break;
+			case 2:
+				removeProduct(sc);
+				break;
+			case 3:
+				DisplayConsoleTools2.displayCart(cart);
+				// exercice : redéfinir les méthodes toString de cart et cartLine
+				// pour avoir un affichage plus beau
+				break;
+			case 4:
+				System.out.println("Au revoir !");
+				break;
+			}
 		} while (choice != 4);
 
 //			Menu _________________________
@@ -61,6 +81,27 @@ public class App2 {
 //			4 - Quitter
 
 		sc.close();
+	}
+
+	private static void removeProduct(Scanner sc) {
+		int codeProd = InputTools.readBoundedInt(sc, "Quel produit ?", 1, productList.size());
+		// exercice : créer la méthode readPositiveInt
+		// int qty = InputTools.readPositiveInt(sc, "Combien ?");
+		int qty = InputTools.readInt(sc, "Combien ?");
+
+		Product pToAdd = productList.get(codeProd - 1);
+
+		cart.removeLine(new CartLine(pToAdd, qty));
+	}
+
+	private static void addProduct(Scanner sc) {
+		int codeProd = InputTools.readBoundedInt(sc, "Quel produit ?", 1, productList.size());
+		int qty = InputTools.readInt(sc, "Combien ?");
+
+		Product pToAdd = productList.get(codeProd - 1);
+
+		cart.addLine(new CartLine(pToAdd, qty));
+
 	}
 
 }

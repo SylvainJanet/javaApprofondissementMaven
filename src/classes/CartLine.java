@@ -4,7 +4,7 @@ public class CartLine {
 
 	private Product product;
 	private int qty;
-	
+
 	public CartLine(Product product, int qty) {
 		this.product = product;
 		this.qty = qty;
@@ -31,11 +31,12 @@ public class CartLine {
 
 	@Override
 	public String toString() {
-		return "CartLine [product=" + product + ", qty=" + qty + "]";
+		StringBuilder sb = new StringBuilder();
+		sb.append(product.getDescription()).append("\t").append(qty).append("\t").append(product.getPrice())
+				.append("\t").append(getTotal());
+		return sb.toString();
 	}
 
-		
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -64,5 +65,5 @@ public class CartLine {
 	public double getTotal() {
 		return getProduct().getPrice() * getQty();
 	}
-	
+
 }

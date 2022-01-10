@@ -25,7 +25,13 @@ public class Cart {
 
 	@Override
 	public String toString() {
-		return "Cart [lines=" + lines + "]";
+		StringBuilder sb = new StringBuilder();
+		sb.append("Contenu du panier ___________________").append("\n");
+		for (CartLine line : lines) {
+			sb.append(line.toString()).append("\n");
+		}
+		sb.append("-- TOTAL PANIER --").append(getTotal());
+		return sb.toString();
 	}
 
 	@Override

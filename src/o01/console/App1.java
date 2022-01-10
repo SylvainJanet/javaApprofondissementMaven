@@ -28,7 +28,7 @@ public class App1 {
 		p.setDescription("Mon produit");
 		// utiliser le setter pour chaque propriété
 
-		Product p2 = new Product(3L, "blabla", 3.5);
+		//Product p2 = new Product(3L, "blabla", 3.5);
 
 		// bonne pratique : faire des vérifications dans les setters, lancer des
 		// exceptions

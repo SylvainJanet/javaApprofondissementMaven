@@ -1,7 +1,5 @@
 package o03.javaSwing;
 
-import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -83,6 +81,7 @@ public class FirstWindow extends JFrame {
 
 	public static void main(String[] args) {
 		FirstWindow.setDefaultLookAndFeelDecorated(true);
+		@SuppressWarnings("unused")
 		FirstWindow firstWindow = new FirstWindow();
 	}
 }

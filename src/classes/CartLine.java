@@ -32,8 +32,8 @@ public class CartLine {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(product.getDescription()).append("\t").append(qty).append("\t").append(product.getPrice())
-				.append("\t").append(getTotal());
+		sb.append(product.getDescription()).append("\t").append(qty).append("\t").append(product.getPrice()).append("\t")
+				.append(getTotal());
 		return sb.toString();
 	}
 

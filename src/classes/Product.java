@@ -49,7 +49,9 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", description=" + description + ", price=" + price + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append(description).append(", ").append(price).append("euros");
+		return builder.toString();
 	}
 
 	@Override

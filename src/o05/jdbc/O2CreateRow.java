@@ -59,7 +59,7 @@ public class O2CreateRow {
 			ps.setString(2, prenom);
 			ps.setInt(3, age);
 
-			// deux méthodes utiles : execute et executeUpdate
+			// deux méthodes utiles : executeQuery et executeUpdate
 			// la première retourne des résultats et la seconde n'attends aucune valeur de
 			// la DB
 			ps.executeUpdate();

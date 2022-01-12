@@ -16,6 +16,17 @@ public class App1 {
 
 	public static void main(String[] args) {
 		/*
+		 * JVM : machine virtuelle qui exécute le code java compilé
+		 * 
+		 * JRE : ensemble de librairies, c'est l'environnement d'exécution Java.
+		 * JRE = JVM + certaines librairies utils, math, lang, libraire en rapport
+		 * avec l'exécution des programes. Plugins qui permettent de lancer
+		 * des applis web sur des navigateurs.
+		 * 
+		 * JDK : ensemble d'outils qui permet de développer du code Java
+		 * JDK = JRE + Outils de debug + options de compilateur
+		 * 
+		 * 
 		 * Raccourci : ctrl + shift + O : rajoute les imports (a priori automatique sur
 		 * Eclispe) ctrl + shift + f : mettre en forme le code ctrl + shift + / : mettre
 		 * en commentaire / décommenter des lignes ctrl + espace : quick actions ctrl +

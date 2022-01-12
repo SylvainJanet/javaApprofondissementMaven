@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 public class MaFrame extends JFrame {
 
+	private static final long serialVersionUID = -8929679637326398940L;
 	private JPanel contentPane;
 
 	/**
@@ -17,19 +18,18 @@ public class MaFrame extends JFrame {
 	public static void main(String[] args) {
 		/*
 		 * 
-		 * Toutes les opérations swing sont faites sur un thread
-		 * qui s'appelle l'EDT (event dispatching thread).
-		 * Si un traitement dans notre programme prend du temps,
-		 * tout l'interface serait bloquée.
+		 * Toutes les opérations swing sont faites sur un thread qui s'appelle l'EDT
+		 * (event dispatching thread). Si un traitement dans notre programme prend du
+		 * temps, tout l'interface serait bloquée.
 		 * 
-		 * La solution pour éviter ça est d'effectuer les opérations
-		 * sur un autre thread, pour que l'interface reste active.
-		 * EventQueue.invokeLater permet de mettre un certains traitement
-		 * en fin de liste de tous les traitements à effectuer sur l'EDT
+		 * La solution pour éviter ça est d'effectuer les opérations sur un autre
+		 * thread, pour que l'interface reste active. EventQueue.invokeLater permet de
+		 * mettre un certains traitement en fin de liste de tous les traitements à
+		 * effectuer sur l'EDT
 		 * 
-		 * En Swing, si vous voulez faire des threads, utilisez l'EDT 
-		 * et ne manipulez pas votre application depuis un autre thread,
-		 * sinon il y a des risques de problèmes. Utilisez EventQueue.invokeLater(...)
+		 * En Swing, si vous voulez faire des threads, utilisez l'EDT et ne manipulez
+		 * pas votre application depuis un autre thread, sinon il y a des risques de
+		 * problèmes. Utilisez EventQueue.invokeLater(...)
 		 * 
 		 */
 		EventQueue.invokeLater(new Runnable() {

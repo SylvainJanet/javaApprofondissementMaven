@@ -31,10 +31,12 @@ public class O1CreateTable {
 	 * 
 	 * JDBC : Java DataBase Connectivity est une API qui permet un accès aux bases de données, quel que soit le SGBD.
 	 * 
-	 * Ces classes sont regroupées dans le package java.sql et incluses dans le jdk.
+	 * Ces classes sont regroupées dans le package java.sql et incluses dans le jdk. Elles sont essentiellement 
+	 * composées d'interfaces.
 	 * 
-	 * Pour pouvoir utiliser JDBC, il faut un pilote qui est spécifique à la base données à laquelle
-	 * on veut accéder.
+	 * Pour pouvoir utiliser JDBC, il faut un pilote qui est spécifique à la base de données à laquelle on veut 
+	 * accéder. Le pilote va être constitué de classes implémentant ces interfaces. Elles sont en général 
+	 * développées par le concepteur de la base de données.
 	 */
 	
 	public static void main(String[]args) {
@@ -66,7 +68,6 @@ public class O1CreateTable {
 			
 			cnx.close();
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}

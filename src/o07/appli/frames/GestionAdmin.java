@@ -4,6 +4,7 @@ import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -17,6 +18,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import classes.Product;
+import o01.console.tools.InitialData;
+
 public class GestionAdmin extends JDialog {
 
 	private static final long serialVersionUID = 4079481141425869660L;
@@ -24,6 +28,7 @@ public class GestionAdmin extends JDialog {
 	private JTextField textField;
 	private JTable table;
 	private JScrollPane panel;
+	private List<Product> productList = InitialData.productList;
 
 	/**
 	 * Launch the application.
@@ -65,8 +70,29 @@ public class GestionAdmin extends JDialog {
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.setBorder(new EmptyBorder(0, 0, 0, 0));
 		table.setBounds(10, 11, 269, 185);
-		table.setModel(new DefaultTableModel(new Object[][] { { null, null, null }, },
-				new String[] { "Id", "Description", "Price" }) {
+		
+		// JTable : à mettre dans le ViewPort d'un JScrollPane
+		// Première étape : modifier la propriété MODEL dans le design pour y mettre les
+		// différents colonnes
+		// Ensuite : y rajouter les données dans le premier du constructeur qui attend un Object[][]
+		
+		// la JTable attend un tableau de tableau
+
+		Object[][] data = new Object[productList.size()][3];
+		int i = 0;
+		for (Product p : productList) {
+			data[i][0] = p.getId();
+			data[i][1] = p.getDescription();
+			data[i][2] = p.getPrice();
+			i++;
+		}
+		// data[i] représente la ième ligne
+		// data[0][0] : id de la première ligne
+		// data[0][1] : description de la première ligne
+		// data[0][2] : prix de la première ligne
+		
+		String[] columnNames = new String[] { "Id", "Description", "Price" };
+		table.setModel(new DefaultTableModel(data,columnNames) {
 			private static final long serialVersionUID = -1646094382640529576L;
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] { Long.class, String.class, Double.class };

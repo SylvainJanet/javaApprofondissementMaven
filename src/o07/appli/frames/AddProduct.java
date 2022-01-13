@@ -3,6 +3,11 @@ package o07.appli.frames;
 import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -10,6 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import classes.Product;
+import o05.jdbc.tools.DbConnection;
+import o06.productDao.ProductDao;
 
 public class AddProduct extends JDialog {
 
@@ -63,14 +72,37 @@ public class AddProduct extends JDialog {
 		textField_1.setColumns(10);
 
 		JButton btnNewButton = new JButton("Cancel");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddProduct.this.dispose();
+			}
+		});
 		btnNewButton.setBounds(335, 227, 89, 23);
 		getContentPane().add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("OK");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try (Connection cnx = DbConnection.getConnection()) {
+					Product pToAdd = new Product();
+					pToAdd.setDescription(textField.getText());
+					pToAdd.setPrice(Double.parseDouble(textField_1.getText()));
+					ProductDao dao = new ProductDao();
+					dao.insert(pToAdd, cnx);
+				} catch (ClassNotFoundException | SQLException | IOException | NumberFormatException e1) {
+					e1.printStackTrace();
+				}
+				try {
+					((GestionAdmin) AddProduct.this.getOwner()).updateJTable();
+				} catch (Exception ex) {
+					System.out.println(ex.getMessage());
+				}
+				AddProduct.this.dispose();
+			}
+		});
 		btnNewButton_1.setBounds(237, 227, 89, 23);
 		getContentPane().add(btnNewButton_1);
 		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 	}
-
 }

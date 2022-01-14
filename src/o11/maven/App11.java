@@ -115,9 +115,67 @@ public class App11 {
 		 * https://mvnrepository.com/
 		 * 
 		 * 
+		 * Pour faire un projet constitué de plusieurs modules :
+		 * Le module parent : créer un Maven Project de type simple, avec packaging pom
+		 * 
+		 * 
+		 * Plus d'informations : 
+		 * 
+		 * - Cycle de vie d'un projet : 
+		 * 
+		 * 		La succession de phases exécutant chacune un ou plusieurs goals est définie comme un cycle de vie du projet.
+		 * 		Exemple de cycle de vie d’un projet JAR qui comprend 8 phases :
+		 * 		- process-resources : copie les fichiers (fichiers de propriétés...), hors code source, dans
+		 * 		le répertoire de construction finale en les filtrant si nécessaire.
+		 * 		- compile : compile le code source du projet dans le dossier de construction du JAR.
+		 * 		- process-test-resources : Phase;process-test-resources copie les fichiers de test, hors
+		 * 		code source, dans le dossier de compilation des tests.
+		 * 		- test-compile : compile les fichiers code source des tests dans le dossier de sortie des
+		 * 		tests.
+		 * 		- test : exécute les tests unitaires.
+		 * 		- package : crée l’archive JAR à partir du dossier contenant les sources compilées et les
+		 * 		fichiers de ressources filtrés.
+		 * 		- install : copie de l’archive JAR dans le référentiel local défini dans la configuration
+		 * 		Apache Maven (pom.xml, settings.xml).
+		 *		 - deploy : déploie l’archive JAR dans le référentiel distant défini dans la configuration
+		 * 		Apache Maven (settings.xml, pom.xml). 
+		 * 
+		 * 		https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference
+		 * 
+		 * - Propriétés dans le pom.xml :
+		 * 		Possibilité d'utiliser d'autre propriétés (variables d'environnements, propriétés liés au projet 
+		 * 		comme le répertoire de base, ou encore des propriétés du settings.xml) 
+		 * 		https://maven.apache.org/pom.html#Properties
+		 * 
+		 * 
+		 * 
 		 * 
 		 * Parties skippées à rattraper : 
-		 * - 
+		 * - Le fichier setting.xml
+		 * 
+		 * 		Le fichier settings.xml est le fichier configuration globale de tous les projets Maven.
+		 * 		Il existe en réalité deux fichiers settings.xml :
+		 * 		- Le fichier local spécifique à l’utilisateur présent dans ${user.home}/.m2/ settings.xml.
+		 * 		- Le fichier global à l’installation présent dans MAVEN_HOME/conf/settings.xml.
+		 * 
+		 * 		Les informations présentes dans les deux fichiers XML sont fusionnées pour créer un 
+		 * 		unique fichier settings.xml. Les informations peuvent également être surchargées, 
+		 * 		puisque ce sont les données du fichier local qui prédominent sur celles du fichier global. 
+		 * 
+		 * - profils
+		 * - portées de dépendances
+		 * - Dépendances transitives, dépendance optionnelles
+		 * - Gestion des versions (patterns)
+		 * - Gestion des conflits
+		 * - Enregistrer un projet/ une archive en tant que dépendance dans le repository
+		 * - tout ce qui est en rapport avec l'intégration continue
+		 * - Génération d'un site Maven (mvn site)
+		 * - Rapports de tests (surfire)
+		 * - Documentation technique (JavaDoc), sources (JXR)
+		 * - Qualimétrie : Maven et Sonar
+		 * 
+		 * - problème lors de la création de projet maven-archetype-quickstart
+		 * 		schéma XNS non valide chez quelques uns.
 		 */
 	}
 }

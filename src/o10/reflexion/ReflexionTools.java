@@ -1,4 +1,4 @@
-package o10.reflexivite;
+package o10.reflexion;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
